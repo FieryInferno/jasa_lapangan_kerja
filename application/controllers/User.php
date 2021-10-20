@@ -16,7 +16,8 @@ class User extends CI_Controller {
       if ($data) {
         if (password_verify($password, $data['password'])) {
           $this->session->set_userdata([
-            'id'  => $data['id']
+            'id'    => $data['id'],
+            'email' => $data['email']
           ]);
 
           switch ($data['level']) {
