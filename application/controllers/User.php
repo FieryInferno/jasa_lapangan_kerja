@@ -21,11 +21,13 @@ class User extends CI_Controller {
 
           switch ($data['level']) {
             case 'admin':
-              $result['sukses']  = 'admin';
+              $result['status'] = 'sukses';
+              $result['level']  = 'admin';
               break;
 
             case 'user':
-              $result['sukses']  = 'user';
+              $result['status'] = 'sukses';
+              $result['level']  = 'user';
               break;
             
             default:
@@ -33,13 +35,16 @@ class User extends CI_Controller {
               break;
           }
         } else {
-          $result['error']  = 'Password salah';
+          $result['status'] = 'error';
+          $result['pesan']  = 'Password Salah';
         }
       } else {
-        $result['error']  = 'Email salah';
+        $result['status'] = 'error';
+        $result['pesan']  = 'Email Salah';
       }
     } else {
-      $result['error']  = validation_errors();
+      $result['status'] = 'error';
+      $result['pesan']  = validation_errors();
     }
     $this->output
         ->set_content_type('application/json')

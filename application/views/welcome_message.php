@@ -9,6 +9,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 8px solid #3498db;
+      width: 30px;
+      height: 30px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -62,6 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <form id="form-login" onsubmit="return login()" action="#">
           <div class="modal-body">
+            <div id="alert"></div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
               <input type="email" class="form-control" name="email">
@@ -73,7 +96,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <input class="btn btn-primary" type="submit" value="Masuk">
+            <div id="tombol_login">
+              <input class="btn btn-primary" type="submit" value="Masuk">
+            </div>
           </div>
         </form>
       </div>
@@ -88,8 +113,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       xhttp.open("POST", "<?= base_url(); ?>login/");
       xhttp.onload = function() {
-        console.log(this);
+        var obj = JSON.parse(this.response);
+
+        switch (obj.status) {
+          case 'sukses':
+            switch (obj.level) {
+              case 'admin':
+                window.location.href = "<?= base_url(); ?>admin"
+                break;
+              case 'user':
+                window.location.href = "<?= base_url(); ?>user"
+                break;
+            
+              default:
+                break;
+            }
+            break;
+
+          case 'error':
+            document.getElementById("alert").innerHTML        = `<div class="alert alert-danger" role="alert">
+                                                                    ${obj.pesan}
+                                                                  </div>`;
+            document.getElementById("tombol_login").innerHTML = `<input class="btn btn-primary" type="submit" value="Masuk">`;
+          default:
+            break;
+        }
+        console.log(obj);
       }
+
+      xhttp.onprogress = function () {
+        document.getElementById("tombol_login").innerHTML = `<div class="loader"></div>`;
+      }
+      
       xhttp.send(formData);
       return false;
     }
