@@ -10,4 +10,11 @@ class Perusahaan extends CI_Controller {
     $data['perusahaan'] = $this->ModelPerusahaan->getAll();
 		$this->load->view('admin/template', $data);
 	}
+
+  public function create()
+  {
+    $data['title']      = 'perusahaan';
+    $data['konten']     = 'admin/perusahaan/create';
+		$this->load->view('admin/template', $data);
+  }
 }
