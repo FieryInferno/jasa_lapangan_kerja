@@ -24,4 +24,9 @@ class ModelPerusahaan extends CI_Model {
   {
     return $this->db->update($this->table, $data, ['id' => $id]);
   }
+
+  public function destroy($id)
+  {
+    $this->db->delete($this->table, ['id' => $id]);
+  }
 }

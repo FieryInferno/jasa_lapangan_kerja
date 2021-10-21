@@ -109,4 +109,12 @@ class Perusahaan extends CI_Controller {
     $data['konten'] = 'admin/perusahaan/show';
 		$this->load->view('admin/template', $data);
   }
+
+  public function destroy($id)
+  {
+    $this->ModelPerusahaan->destroy($id);
+
+    $this->session->set_flashdata('sukses', 'Berhasil hapus data');
+    redirect($_SERVER['HTTP_REFERER']);
+  }
 }

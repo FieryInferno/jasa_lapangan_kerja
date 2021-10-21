@@ -13,3 +13,4 @@ $route['admin/perusahaan/tambah']['post']       = 'Perusahaan/store';
 $route['admin/perusahaan/edit/(:any)']['get']   = 'Perusahaan/edit/$1';
 $route['admin/perusahaan/edit/(:any)']['post']  = 'Perusahaan/update/$1';
 $route['admin/perusahaan/detail/(:any)']        = 'Perusahaan/show/$1';
+$route['admin/perusahaan/hapus/(:any)']['post'] = 'Perusahaan/destroy/$1';
