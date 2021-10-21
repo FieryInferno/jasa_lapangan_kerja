@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 18, 2021 at 10:53 AM
+-- Generation Time: Oct 21, 2021 at 04:53 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -20,6 +20,23 @@ SET time_zone = "+00:00";
 --
 -- Database: `cari_kerja`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perusahaan`
+--
+
+CREATE TABLE `perusahaan` (
+  `id` int(11) NOT NULL,
+  `logo` varchar(191) NOT NULL,
+  `nama` varchar(191) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `alamat` varchar(191) NOT NULL,
+  `industri` varchar(191) NOT NULL,
+  `website` varchar(191) NOT NULL,
+  `ukuran` varchar(191) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,6 +65,12 @@ INSERT INTO `user` (`id`, `email`, `password`, `level`, `created_at`, `updated_a
 --
 
 --
+-- Indexes for table `perusahaan`
+--
+ALTER TABLE `perusahaan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -56,6 +79,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `perusahaan`
+--
+ALTER TABLE `perusahaan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
