@@ -23,7 +23,7 @@
   <section class="content">
     <div class="container-fluid">
       <div class="card">
-        <form action="<?= base_url(); ?>admin/perusahaan/edit" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('admin/perusahaan/edit/' . $id); ?>" method="post" enctype="multipart/form-data">
           <?php
             if ($this->session->error) { ?>
               <div class="alert alert-danger">
@@ -38,7 +38,8 @@
               </div>
               <div class="col-10">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="foto" onchange="previewImg()" name="logo" required>
+                  <input type="file" class="custom-file-input" id="foto" onchange="previewImg()" name="logo">
+                  <input type="hidden" name="logo_lama" value="<?= $logo; ?>">
                   <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
               </div>

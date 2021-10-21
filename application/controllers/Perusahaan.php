@@ -68,4 +68,37 @@ class Perusahaan extends CI_Controller {
     $data['konten'] = 'admin/perusahaan/edit';
 		$this->load->view('admin/template', $data);
   }
+
+  public function update($id)
+  {
+    $this->form_validation->set_rules('nama', 'Nama', 'required');
+    $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+    $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+    $this->form_validation->set_rules('industri', 'Industri', 'required');
+    $this->form_validation->set_rules('website', 'Website', 'required');
+    $this->form_validation->set_rules('ukuran', 'Ukuran', 'required');
+
+    if ($this->form_validation->run() !== FALSE) {
+      if ($_FILE['logo']['name'] == '') {
+        $data['logo'] = $this->input->post('logo_lama');
+      } else {
+        $data['logo'] = $this->upload();
+      }
+      
+      $data['deskripsi']  = $this->input->post('deskripsi');
+      $data['nama']       = $this->input->post('nama');
+      $data['alamat']     = $this->input->post('alamat');
+      $data['industri']   = $this->input->post('industri');
+      $data['website']    = $this->input->post('website');
+      $data['ukuran']     = $this->input->post('ukuran');
+
+      $this->ModelPerusahaan->update($id, $data);
+
+      $this->session->set_flashdata('sukses', 'Berhasil edit data');
+      redirect('admin/perusahaan');
+    } else {
+      $this->session->set_flashdata('error', validation_errors());
+      redirect($_SERVER['HTTP_REFERER']);
+    }
+  }
 }

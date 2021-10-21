@@ -26,16 +26,23 @@
           <a href="<?= base_url(); ?>admin/perusahaan/tambah" class="btn btn-primary">Tambah</a>
         </div>
         <div class="card-body">
+          <?php
+            if ($this->session->sukses) { ?>
+              <div class="alert alert-success">
+                <?= $this->session->sukses; ?>
+              </div>
+            <?php }
+          ?>
           <div class="table-responsive">
-            <table class="table" id="myTable">
+            <table class="table" id="myTable" width="100%">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nama Perusahaan</th>
-                  <th scope="col">Lokasi</th>
-                  <th scope="col">Industri</th>
-                  <th scope="col">Website</th>
-                  <th scope="col">Aksi</th>
+                  <th scope="col" width="2%">#</th>
+                  <th scope="col" width="20%">Nama Perusahaan</th>
+                  <th scope="col" width="22%">Lokasi</th>
+                  <th scope="col" width="22%">Industri</th>
+                  <th scope="col" width="19%">Website</th>
+                  <th scope="col" width="10%">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -49,7 +56,7 @@
                       <td><?= $key['industri']; ?></td>
                       <td><a href="<?= $key['website']; ?>"><?= $key['website']; ?></a></td>
                       <td>
-                        <button class="btn btn-info">Detail</button>
+                        <a href="<?= base_url('admin/perusahaan/detail/' . $key['id']); ?>" class="btn btn-info">Detail</a>
                         <a href="<?= base_url('admin/perusahaan/edit/' . $key['id']); ?>" class="btn btn-success">Edit</a>
                         <button class="btn btn-danger">Hapus</button>
                       </td>

@@ -19,4 +19,9 @@ class ModelPerusahaan extends CI_Model {
   {
     return $this->db->get_where($this->table, ['id'  => $id])->row_array();
   }
+
+  public function update($id, $data)
+  {
+    return $this->db->update($this->table, $data, ['id' => $id]);
+  }
 }
