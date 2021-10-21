@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>asset/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?= base_url(); ?>asset/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -68,14 +69,14 @@
                 with font-awesome or any other icon font library -->
 
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link <?= $title == 'dashboard' ? 'active' : ''; ?>">
+              <a href="<?= base_url(); ?>admin" class="nav-link <?= $title == 'dashboard' ? 'active' : ''; ?>">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>Dashboard</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link <?= $title == 'perusahaan' ? 'active' : ''; ?>">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+              <a href="<?= base_url(); ?>admin/perusahaan" class="nav-link <?= $title == 'perusahaan' ? 'active' : ''; ?>">
+                <i class="nav-icon fas fa-th"></i>
                 <p>Perusahaan</p>
               </a>
             </li>
@@ -162,9 +163,11 @@
   <script src="<?= base_url(); ?>asset/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
   <script src="<?= base_url(); ?>asset/dist/js/adminlte.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<?= base_url(); ?>asset/dist/js/demo.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="<?= base_url(); ?>asset/dist/js/pages/dashboard.js"></script>
+  <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready( function () {
+      $('#myTable').DataTable();
+    } );
+  </script>
 </body>
 </html>
