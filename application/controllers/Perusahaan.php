@@ -101,4 +101,12 @@ class Perusahaan extends CI_Controller {
       redirect($_SERVER['HTTP_REFERER']);
     }
   }
+
+  public function show($id)
+  {
+    $data           = $this->ModelPerusahaan->get($id);
+    $data['title']  = 'perusahaan';
+    $data['konten'] = 'admin/perusahaan/show';
+		$this->load->view('admin/template', $data);
+  }
 }
