@@ -44,10 +44,10 @@
                   foreach ($perusahaan as $key) { ?>
                     <tr>
                       <th scope="row"><?= $no++; ?></th>
-                      <td><img src="<?= base_url('asset/' . $key['logo']); ?>" alt=""> <?= $key['nama']; ?></td>
-                      <td><?= $key['lokasi']; ?></td>
+                      <td><img src="<?= base_url('asset/' . $key['logo']); ?>" alt="" width="25%"> <?= $key['nama']; ?></td>
+                      <td><?= $key['alamat']; ?></td>
                       <td><?= $key['industri']; ?></td>
-                      <td><a href="<?= $key['website']; ?>"><?= $key['industri']; ?></a></td>
+                      <td><a href="<?= $key['website']; ?>"><?= $key['website']; ?></a></td>
                       <td>
                         <button class="btn btn-info">Detail</button>
                         <button class="btn btn-success">Edit</button>

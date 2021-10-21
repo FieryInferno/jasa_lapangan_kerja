@@ -23,7 +23,14 @@
   <section class="content">
     <div class="container-fluid">
       <div class="card">
-        <form action="<?= base_url(); ?>admin/perusahaan/tambah" action="post">
+        <form action="<?= base_url(); ?>admin/perusahaan/tambah" method="post" enctype="multipart/form-data">
+          <?php
+            if ($this->session->error) { ?>
+              <div class="alert alert-danger">
+                <?= $this->session->error; ?>
+              </div>
+            <?php }
+          ?>
           <div class="card-body">
             <div class="row">
               <div class="col-2">
