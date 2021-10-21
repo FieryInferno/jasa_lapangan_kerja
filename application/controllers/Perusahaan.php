@@ -13,8 +13,8 @@ class Perusahaan extends CI_Controller {
 
   public function create()
   {
-    $data['title']      = 'perusahaan';
-    $data['konten']     = 'admin/perusahaan/create';
+    $data['title']  = 'perusahaan';
+    $data['konten'] = 'admin/perusahaan/create';
 		$this->load->view('admin/template', $data);
   }
 
@@ -59,5 +59,13 @@ class Perusahaan extends CI_Controller {
     } else {
       return $this->upload->data('file_name');
     }
+  }
+
+  public function edit($id)
+  {
+    $data           = $this->ModelPerusahaan->get($id);
+    $data['title']  = 'perusahaan';
+    $data['konten'] = 'admin/perusahaan/edit';
+		$this->load->view('admin/template', $data);
   }
 }

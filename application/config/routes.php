@@ -7,6 +7,8 @@ $route['translate_uri_dashes']  = FALSE;
 
 $route['login']['post'] = 'User/login';
 
-$route['admin/perusahaan']                = 'Perusahaan';
-$route['admin/perusahaan/tambah']['get']  = 'Perusahaan/create';
-$route['admin/perusahaan/tambah']['post'] = 'Perusahaan/store';
+$route['admin/perusahaan']                      = 'Perusahaan';
+$route['admin/perusahaan/tambah']['get']        = 'Perusahaan/create';
+$route['admin/perusahaan/tambah']['post']       = 'Perusahaan/store';
+$route['admin/perusahaan/edit/(:any)']['get']   = 'Perusahaan/edit/$1';
+$route['admin/perusahaan/edit']['post']['post'] = 'Perusahaan/update';

@@ -50,7 +50,7 @@
                       <td><a href="<?= $key['website']; ?>"><?= $key['website']; ?></a></td>
                       <td>
                         <button class="btn btn-info">Detail</button>
-                        <button class="btn btn-success">Edit</button>
+                        <a href="<?= base_url('admin/perusahaan/edit/' . $key['id']); ?>" class="btn btn-success">Edit</a>
                         <button class="btn btn-danger">Hapus</button>
                       </td>
                     </tr>

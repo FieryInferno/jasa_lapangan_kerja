@@ -14,4 +14,9 @@ class ModelPerusahaan extends CI_Model {
   {
     $this->db->insert($this->table, $data);
   }
+
+  public function get($id)
+  {
+    return $this->db->get_where($this->table, ['id'  => $id])->row_array();
+  }
 }
